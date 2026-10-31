@@ -393,6 +393,25 @@
   .gallery-hint{ margin-top:20px; font-size:14px; color:var(--tertiary); font-weight:500; display:inline-flex; align-items:center; gap:8px; }
   .gallery-hint .pulse{ width:8px; height:8px; border-radius:50%; background:var(--green); flex:none; animation:pulse 2.4s infinite; }
 
+  /* ---------- gallery — scrollable phone ---------- */
+  .gal-phone{ touch-action:pan-x pan-y; }
+  .shot-strip{ display:flex; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; -ms-overflow-style:none; cursor:grab; }
+  .shot-strip::-webkit-scrollbar{ display:none; }
+  .shot-strip.dragging{ cursor:grabbing; scroll-snap-type:none; }
+  .shot-slide{ flex:0 0 100%; scroll-snap-align:center; scroll-snap-stop:always; }
+  .shot-slide img{ width:100%; height:auto; display:block; pointer-events:none; user-select:none; -webkit-user-drag:none; }
+  .gal-arrow{ position:absolute; top:50%; transform:translateY(-50%); z-index:6; width:42px; height:42px; border-radius:50%; border:1px solid rgba(255,255,255,.22); background:rgba(8,12,26,.55); color:#fff; cursor:pointer; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); transition:background .2s ease, transform .15s ease; }
+  .gal-arrow:hover{ background:rgba(8,12,26,.85); }
+  .gal-arrow:active{ transform:translateY(-50%) scale(.9); }
+  .gal-arrow svg{ width:20px; height:20px; }
+  .gal-prev{ right:10px; }
+  .gal-next{ left:10px; }
+  .gal-dots{ display:flex; gap:8px; justify-content:center; margin-top:20px; }
+  .gal-dot{ width:9px; height:9px; border-radius:50%; border:0; padding:0; background:rgba(127,140,160,.35); cursor:pointer; transition:background .2s ease, transform .2s ease; }
+  .gal-dot:hover{ background:rgba(127,140,160,.6); }
+  .gal-dot.active{ background:var(--green); transform:scale(1.3); }
+  @media (max-width:560px){ .gal-arrow{ width:36px; height:36px; } .gal-prev{ right:6px; } .gal-next{ left:6px; } }
+
   /* ---------- install ---------- */
   .steps{ display:grid; grid-template-columns:repeat(4,1fr); gap:36px; margin-top:60px; text-align:start; }
   .step{ border-top:1px solid var(--hairline); padding-top:22px; }
@@ -892,7 +911,7 @@
 
     <div class="hstats">
       <div class="wrap-wide hstats-in">
-        <div class="stat"><div class="num" data-count="99">99</div><p>פקודות מובנות — מדיה, AI, כלי קבוצות, חיפוש ועוד</p></div>
+        <div class="stat"><div class="num" data-count="100">100</div><p>פקודות מובנות — מדיה, AI, כלי קבוצות, חיפוש ועוד</p></div>
         <div class="stat"><div class="num" data-count="6">6</div><p>מסכי שליטה: בית, שידורים, טריגרים, קבוצות, אנשים, הגדרות</p></div>
         <div class="stat"><div class="num">0<em>₪</em></div><p>בלי מנוי, בלי פרסומות, בלי תשלומים בתוך האפליקציה</p></div>
         <div class="stat"><div class="num">24/7</div><p>זמין כל עוד הטלפון דולק — כולל מצב שבת אוטומטי</p></div>
@@ -1075,7 +1094,7 @@
         <div class="demo-copy">
           <p class="eyebrow">הדגמה חיה</p>
           <h2 class="display">אל תקראו עליו.<br />דברו איתו.</h2>
-          <p>זה העתק של חוויית הוואטסאפ האמיתית: כתבו <strong>!עזרה</strong> או הקישו על כפתור התפריט שבתוך ההודעה — ייפתח גיליון הקטגוריות בדיוק כמו בבוט עצמו. בחרו קטגוריה, ואז פקודה, והבוט יבצע אותה בצ'אט. כל 99 הפקודות כאן; רק השרת מאחוריהן נשאר באפליקציה.</p>
+          <p>זה העתק של חוויית הוואטסאפ האמיתית: כתבו <strong>!עזרה</strong> או הקישו על כפתור התפריט שבתוך ההודעה — ייפתח גיליון הקטגוריות בדיוק כמו בבוט עצמו. בחרו קטגוריה, ואז פקודה, והבוט יבצע אותה בצ'אט. כל 100 הפקודות כאן; רק השרת מאחוריהן נשאר באפליקציה.</p>
           <p class="demo-tag">הדגמה אינטראקטיבית — המספרים והתשובות שתראו כאן הם נתוני הדגמה להמחשה, לא נתוני שימוש אמיתיים</p>
           <div class="try-chips" id="tryChips">
             <button type="button" data-cmd="!עזרה">!עזרה — התפריט</button>
@@ -1143,33 +1162,22 @@
       <div class="sec-head">
         <p class="eyebrow">האפליקציה מבפנים</p>
         <h2 class="display">שישה מסכים.<br />אפס קוד.</h2>
-        <p>כל השליטה בבוט קורית כאן — לא בטרמינל ולא בעריכת קבצים. בחרו מסך בבקר המפולח, או לחצו על לשונית בסרגל התחתון שבתוך צילום המסך עצמו.</p>
+        <p>כל השליטה בבוט קורית כאן — לא בטרמינל ולא בעריכת קבצים. דפדפו בין המסכים בהחלקה, בחרו מסך בבקר המפולח, או דלגו עם החצים.</p>
       </div>
 
       <div class="screen-tabs" id="screenTabs" role="tablist" aria-label="מסכי האפליקציה"></div>
 
       <div class="screen-stage">
-        <div class="screen-phone live-phone untouched" data-phone>
-          <img class="shot" id="screenImg" data-shot src="assets/shots/shot-043130.jpg" alt="" width="1080" height="2202" />
-          <div class="phone-fallback" aria-hidden="true">
-            <div class="fb-head">
-              <span class="fb-logo"><svg viewBox="0 0 48 48" fill="#0a2e14" aria-hidden="true"><path d="M10 6l7 7h14l7-7 2 12c2.6 1.8 4 4.4 4 8 0 8-6.7 12-20 12S4 34 4 26c0-3.6 1.4-6.2 4-8l2-12z"/><circle cx="17" cy="26" r="3.2" fill="#34c759"/><circle cx="31" cy="26" r="3.2" fill="#34c759"/></svg></span>
-              <div><b>MeowBot</b><span data-fb-sub>הייפר־בוט · כל הפקודות, רץ מקומית</span></div>
-            </div>
-            <div class="fb-card"><b>מחובר</b><p data-fb-desc>מצב: מורשים · שפה: עברית · קידומת: !</p></div>
-            <div class="fb-stats"><div><b>1,284</b><span>הודעות היום</span></div><div><b>312</b><span>פקודות היום</span></div><div><b>14</b><span>טריגרים</span></div><div><b>9</b><span>הגנות</span></div></div>
-            <p class="fb-demo-tag">נתוני הדגמה להמחשה — תרחיש שימוש טיפוסי של יום עבודה, לא נתוני משתמש אמיתי</p>
-            <p class="fb-note">התצוגה המובנית — צילום המסך לא נטען, הניווט בתחתית עדיין עובד</p>
-          </div>
-          <div class="nav-glow" aria-hidden="true"></div>
-          <div class="hs hs-quick" data-hotspots="quick"></div>
-          <div class="hs hs-nav" data-hotspots="nav" role="group" aria-label="ניווט בין מסכי האפליקציה — לחצו על לשונית כדי לעבור מסך"></div>
-          <div class="phone-toast" data-toast role="status"></div>
+        <div class="screen-phone gal-phone">
+          <div class="shot-strip" id="shotStrip" aria-label="צילומי מסך של האפליקציה — החליקו כדי לדפדף"></div>
+          <button class="gal-arrow gal-prev" id="galPrev" aria-label="המסך הקודם"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></button>
+          <button class="gal-arrow gal-next" id="galNext" aria-label="המסך הבא"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m15 6-6 6 6 6"/></svg></button>
         </div>
+        <div class="gal-dots" id="galDots" role="tablist" aria-label="דפדוף בין מסכי האפליקציה"></div>
         <div class="screen-cap">
           <h3 id="screenTitle"></h3>
           <p id="screenDesc"></p>
-          <p class="gallery-hint"><span class="pulse" aria-hidden="true"></span> נסו: לחיצה על לשונית בתוך הצילום מעבירה מסך — בדיוק כמו באפליקציה</p>
+          <p class="gallery-hint"><span class="pulse" aria-hidden="true"></span> החליקו ימינה ושמאלה על הטלפון — בדיוק כמו באפליקציה האמיתית</p>
         </div>
       </div>
     </div>
@@ -1337,9 +1345,88 @@
     b.setAttribute('role','tab');
     b.innerHTML = '<span class="n">0' + (i + 1) + '</span><span class="t"></span>';
     b.querySelector('.t').textContent = s.tab;
-    b.addEventListener('click', function(){ setScreen(i); });
+    b.addEventListener('click', function(){ window.galGo(i); });
     tabsEl.appendChild(b);
   });
+
+  /* ============ scrollable screenshot gallery ============ */
+  (function(){
+    var strip = document.getElementById('shotStrip');
+    var dotsEl = document.getElementById('galDots');
+    var slides = [];
+    SCREENS.forEach(function(s, i){
+      var d = document.createElement('div');
+      d.className = 'shot-slide';
+      var im = document.createElement('img');
+      im.src = 'assets/shots/' + s.file;
+      im.alt = 'צילום מסך של אפליקציית MeowBot — מסך ' + s.tab;
+      im.width = 945; im.height = 2048;
+      im.loading = i < 2 ? 'eager' : 'lazy';
+      im.draggable = false;
+      d.appendChild(im);
+      strip.appendChild(d);
+      slides.push(d);
+      var dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'gal-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('role', 'tab');
+      dot.setAttribute('aria-label', 'מסך ' + s.tab);
+      dot.addEventListener('click', function(){ go(i); });
+      dotsEl.appendChild(dot);
+    });
+    var cur = 0, lock = false;
+    function sync(i){
+      if(i === cur || i < 0) return;
+      cur = i;
+      tabsEl.querySelectorAll('.screen-tab').forEach(function(t, j){ t.classList.toggle('active', j === i); });
+      dotsEl.querySelectorAll('.gal-dot').forEach(function(dt, j){
+        dt.classList.toggle('active', j === i);
+        dt.setAttribute('aria-selected', j === i ? 'true' : 'false');
+      });
+      capT.textContent = SCREENS[i].title;
+      capD.textContent = SCREENS[i].desc;
+    }
+    function go(i){
+      i = (i + SCREENS.length) % SCREENS.length;
+      sync(i);
+      lock = true;
+      try{ slides[i].scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'}); }catch(e){}
+      setTimeout(function(){ lock = false; }, 500);
+    }
+    window.galGo = go;
+    document.getElementById('galPrev').addEventListener('click', function(){ go(cur - 1); });
+    document.getElementById('galNext').addEventListener('click', function(){ go(cur + 1); });
+    if('IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(es){
+        es.forEach(function(e){
+          if(e.isIntersecting && !lock) sync(slides.indexOf(e.target));
+        });
+      }, {root: strip, threshold: 0.55});
+      slides.forEach(function(d){ io.observe(d); });
+    }
+    /* desktop mouse-drag */
+    var down = false, sx = 0, sl = 0;
+    strip.addEventListener('pointerdown', function(e){
+      if(e.pointerType !== 'mouse') return;
+      down = true; sx = e.clientX; sl = strip.scrollLeft;
+      strip.classList.add('dragging');
+    });
+    window.addEventListener('pointermove', function(e){
+      if(!down) return;
+      strip.scrollLeft = sl - (e.clientX - sx);
+    });
+    window.addEventListener('pointerup', function(){
+      down = false; strip.classList.remove('dragging');
+    });
+    /* keyboard: in RTL, ArrowLeft advances, ArrowRight goes back */
+    strip.setAttribute('tabindex', '0');
+    strip.addEventListener('keydown', function(e){
+      if(e.key === 'ArrowLeft'){ go(cur + 1); e.preventDefault(); }
+      else if(e.key === 'ArrowRight'){ go(cur - 1); e.preventDefault(); }
+    });
+    capT.textContent = SCREENS[0].title;
+    capD.textContent = SCREENS[0].desc;
+  })();
 
   function toastIn(phoneEl, text){
     var t = phoneEl.querySelector('[data-toast]');
@@ -1382,11 +1469,6 @@
         toastIn(phone, same ? ('אתם כבר במסך ' + s.tab) : ('עוברים למסך ' + s.tab + '…'));
       }
     });
-    tabsEl.querySelectorAll('.screen-tab').forEach(function(t, j){
-      t.classList.toggle('active', j === i);
-    });
-    capT.textContent = s.title;
-    capD.textContent = s.desc;
   }
 
   /* build the in-screenshot hotspots on every live phone */
@@ -1438,7 +1520,7 @@
   var CATS = [
     { name:'עזרה ומידע', desc:'התפריט, סטטוס הבוט ומידע כללי', cmds:[
       ['עזרה','פתיחת תפריט הפקודות הראשי','__MENU__'],
-      ['עזרה הכל','כל הפקודות ברשימה אחת ארוכה','הנה כל 99 הפקודות, לפי קטגוריות:\nעזרה ומידע (9) · מדיה והורדות (15) · בינה מלאכותית (10) · ניהול קבוצות (16) · הגנות (12) · טריגרים ותזכורות (11) · כלים וחיפוש (15) · בעלים ומערכת (11)\nלטיול נוח יותר — כתבו !עזרה וטיילו בתפריט.'],
+      ['עזרה הכל','כל הפקודות ברשימה אחת ארוכה','הנה כל 100 הפקודות, לפי קטגוריות:\nעזרה ומידע (9) · מדיה והורדות (15) · בינה מלאכותית (10) · ניהול קבוצות (16) · הגנות (12) · טריגרים ותזכורות (11) · כלים וחיפוש (16) · בעלים ומערכת (11)\nלטיול נוח יותר — כתבו !עזרה וטיילו בתפריט.'],
       ['סטטוס','מצב חיבור, גרסה ומצב עבודה','מחובר ✓\nמצב: מורשים · שפה: עברית · קידומת: !\nגרסה: 1.20.0 · זמן ריצה: 3 ימים, 7 שעות\nהיום (בדוגמה): 1,284 הודעות · 312 פקודות · 14 טריגרים פעילים · 9 הגנות\nהבוט רץ מקומית על הטלפון — בלי שרת חיצוני.\n(המספרים כאן הם נתוני הדגמה להמחשה.)'],
       ['פינג','בדיקת מהירות תגובה','פונג! זמן תגובה: 84 מ"ש.'],
       ['גרסה','גרסת הבוט הנוכחית','MeowBot גרסה 1.20.0 (קוד 44).\nהעדכון האחרון: ניקוי קישורים ממעקב — !נקה + כרטיס ניקוי באפליקציה.'],
